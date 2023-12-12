@@ -24,7 +24,7 @@ organization_contact VARCHAR(50));
 
 Running the Project: 
 
-Once you finished cloning the repository on your preferred JAVA and SQL IDE. 
+Once you finished cloning the repository on your preferred JAVA and SQL IDE, run the MySQLDatabaseTester java class. This class will start by asking for the URL for your MySQL database server along with your username and password. Press enter after each prompt. Once connected, the program gives the user 3 options, add entries, filter data, or view all data. The program will run until the user indicates that they are done by typing done and pressing enter.
 
 
 
