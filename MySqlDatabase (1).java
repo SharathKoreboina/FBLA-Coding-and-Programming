@@ -20,6 +20,8 @@ public static Statement statement;
 		try {
 			connection =  DriverManager.getConnection(url,username,password);
 			statement = connection.createStatement();
+			statement.execute("create table organization (organization_ID INT primary key,organization_Name VARCHAR(50),organization_Type VARCHAR(30),organization_resources VARCHAR(50),organization_contact VARCHAR(50));");
+
 		}
 		catch(Exception e) {
 			System.out.println(e);
