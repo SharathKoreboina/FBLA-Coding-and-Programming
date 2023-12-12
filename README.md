@@ -24,7 +24,7 @@ organization_contact VARCHAR(50));
 
 Running the Project: 
 
-
+Once you finished cloning the repository on your preferred JAVA and SQL IDE. 
 
 
 
