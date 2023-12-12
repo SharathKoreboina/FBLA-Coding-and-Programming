@@ -13,18 +13,19 @@ To start, you will need to download an IDE for JAVA (Eclipse or IntelliJ) and an
 External Dependencies required:
 
 Link to to SQL IDE: https://www.mysql.com/products/workbench/
-When starting the SQL server, paste the following: 
 
-create table organization (
-organization_ID INT primary key,
-organization_Name VARCHAR(50),
-organization_Type VARCHAR(30),
-organization_resources VARCHAR(50),
-organization_contact VARCHAR(50));
+Link to JDBC connector: https://dev.mysql.com/downloads/connector/j
+Copy and paste this link into a web browser and select "platform independent" from the drop-down menu.
+Download the zip archive.
 
 Running the Project: 
 
 Once you finished cloning the repository on your preferred JAVA and SQL IDE, run the MySQLDatabaseTester java class. This class will start by asking for the URL for your MySQL database server along with your username and password. Press enter after each prompt. Once connected, the program gives the user 3 options, add entries, filter data, or view all data. The program will run until the user indicates that they are done by typing done and pressing enter.
+
+Credits:
+
+Team Members: Brandon Santamaria, Sharath Koreboina, Shivam Kanani
+
 
 
 
