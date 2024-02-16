@@ -15,26 +15,7 @@ public class MySQLDatabaseTester {
 		String pass = input.nextLine();
 		msd = new MySqlDatabase(url, user, pass);
 		loadPresetOrganizations();
-		String userChoice = "";
-		do {
-			System.out.println("Enter 1 to add data to the table, enter 2 to filter data, or 3 to view current entries? Enter done when complete.");
-			userChoice = input.nextLine();
-			if(userChoice.equals("1")) {
-				op.askUserForInfo();
-				msd.loadEntriesToDatabase(op.additionalEntries, 26);
-			}
-			if(userChoice.equals("2")) {
-				System.out.println("Please enter an organization name: ");
-				String orgName = input.nextLine();
-				msd.filterData(orgName);
-			}
-			if(userChoice.equals("3")) {
-				msd.viewEntries();
-			}
-			
-			
-		}while(!(userChoice.equalsIgnoreCase("done")));
-		
+		OrganizationInterface oi = new OrganizationInterface();	
 	}
 	public static void loadPresetOrganizations() {
 		msd.loadEntriesToDatabase(op.org1, 1);
