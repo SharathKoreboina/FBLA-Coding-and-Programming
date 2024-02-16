@@ -1,0 +1,98 @@
+package src;
+import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class OrganizationInterface extends JFrame {
+	public static MySQLDatabaseTester msqdt = new MySQLDatabaseTester();
+    private List<String> organizations; // Dummy data
+    private DefaultListModel<String> listModel;
+    private JTextField filterField = new JTextField();
+    JList<String> organizationList;
+    public OrganizationInterface() {
+        super("Organization Management");
+        filterField.setPreferredSize(new Dimension(200, 25));
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 300);
+        setLayout(new BorderLayout());
+
+        organizations = new ArrayList<>();
+        organizations.add("Welcome to event organizer!");
+        organizations.add("View all current data, or add new data to the database");
+
+        // Create buttons
+        JButton viewButton = new JButton("View All Organizations");
+        JButton addButton = new JButton("Add Organization");
+
+        // Create list model for JList
+        listModel = new DefaultListModel<>();
+        for (String org : organizations) {
+            listModel.addElement(org);
+        }
+       
+        organizationList = new JList<>(listModel);
+        // Create text field for filtering
+        JTextField filterField = new JTextField();
+        filterField.setPreferredSize(new Dimension(200, 25));
+       
+
+        // Add action listeners
+        viewButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	msqdt.msd.viewEntries();
+                //JOptionPane.showMessageDialog(null, "View All Organizations button clicked");
+            }
+        });
+
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	msqdt.AddEntriesToDatabase();
+               // JOptionPane.showMessageDialog(null, "Add Organization button clicked");
+            }
+        });
+
+        // Create panel and add components
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(viewButton);
+        buttonPanel.add(addButton);
+
+ 
+
+        JPanel mainPanel = new JPanel(new BorderLayout());
+        mainPanel.add(new JScrollPane(organizationList), BorderLayout.CENTER);
+
+        // Add panels to frame
+        getContentPane().add(buttonPanel, BorderLayout.NORTH);
+        getContentPane().add(mainPanel, BorderLayout.CENTER);
+
+        // Set frame visible
+        setVisible(true);
+    }
+
+    private void filterOrganizations() {
+
+        String filterText = filterField.getText();
+        listModel.clear();
+        for (String org : organizations) {
+            if (org.contains(filterText)) {
+                listModel.addElement(org);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new OrganizationInterface();
+            }
+        });
+    }
+}
